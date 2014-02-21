@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./WEB-INF/Template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="content">
+        <h:form id="accueil">
+            <h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="5">  
+                <h:outputText value="Type du dispositif : "  />  
+                <br />
+                <p:selectOneRadio id="device" value="#{filtresBean.choixDevice}" layout="grid" columns="2" >  
+                    <f:selectItems value="#{filtresBean.devices}" var="device" />  
+                </p:selectOneRadio>  
+
+            </h:panelGrid> 
+            
+            
+            <h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="5">  
+                <h:outputText value="Utilisateur : "  />  
+                <br />
+                <p:selectOneRadio id="user" value="#{filtresBean.choixUser}" layout="grid" columns="2">  
+                    <f:selectItems value="#{filtresBean.users}" var="user" />  
+                </p:selectOneRadio>  
+
+            </h:panelGrid> 
+
+            <h:panelGrid columns="2" style="margin-bottom:20px" cellpadding="5">  
+                <h:outputText value="Type d'application : "  />  
+                <br />
+                <p:selectOneRadio  id="apptype" value="#{filtresBean.choixTypeApp}" layout="grid" columns="2">  
+                    <f:selectItems value="#{filtresBean.appTypes}" var="typeapp" />  
+                </p:selectOneRadio>  
+
+            </h:panelGrid> 
+
+            <h:panelGrid columns="2" style="margin-bottom:5px" cellpadding="5">  
+
+                <h3> Choisir la méthode d'évaluation :</h3>
+
+                <p:selectManyCheckbox  id="methode" value="#{filtresBean.methodeChoisie}" layout="grid" columns="2">  
+                    <f:selectItems value="#{filtresBean.methodes}" var="method" />  
+                </p:selectManyCheckbox>
+
+            </h:panelGrid>
+            <center>   
+                <p:commandButton value="Valider" action="QuestionsChoice?faces-redirect=true&amp;" >
+                 <f:param name="Device" value="#{filtresBean.choixDevice}"/>
+                    <f:param name="User" value="#{filtresBean.choixUser}"/>
+                    <f:param name="Apptype" value="#{filtresBean.choixTypeApp}"/>
+              
+                </p:commandButton>
+                
+                
+                <p:outputLabel value="" />
+            </center>
+        </h:form> 
+    </ui:define>
+
+
+</ui:composition>
